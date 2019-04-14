@@ -1,0 +1,7 @@
+# 本番環境のビルドコマンド
+[context.production]
+  command = "yarn && yarn build"
+
+# 開発環境のビルドコマンド
+[context.develop]
+  command = "yarn && yarn build --mode=development"
