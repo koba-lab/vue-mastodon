@@ -44,8 +44,8 @@ export default {
     }
   },
   methods: {
-    fetchLists() {
-      const res = apiaxios.get(`/api/v1/lists/${process.env.VUE_APP_LISTID}/accounts`)
+    async fetchLists() {
+      const res = await apiaxios.get(`/api/v1/lists/${process.env.VUE_APP_LISTID}/accounts`)
       this.lists = res.data
     }
   }
