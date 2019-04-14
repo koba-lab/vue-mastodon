@@ -3,10 +3,10 @@
     <HelloWorld msg="イカトドン肉派サイトのために色々するサイト"/>
 
     <div class="mb-5">
-      <button class="btn btn-primary" @click="fetchLists">リストを取得する</button>
+      <button class="btn btn-success" @click="fetchLists">リストを取得する</button>
     </div>
 
-    <section>
+    <section v-if="lists.length > 0">
       <h3>肉派メンバー（抜粋）</h3>
       <div class="row">
         <div class="col-4 col-md-2" v-for="(list, index) in lists" :key="index">
