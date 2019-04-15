@@ -38,6 +38,7 @@ header {
 
   .key-visual {
     max-width: 80%;
+    animation: fadeIn 1s 1s both;
   }
 }
 
@@ -56,6 +57,8 @@ header {
   }
 
   .message {
+    animation: fadeIn 1s both;
+
     h1 {
       font-size: 30px;
       font-weight: bold;
@@ -83,6 +86,8 @@ header {
   }
 
   .message {
+    animation: fadeIn 1s both;
+
     h1 {
       font-size: 80px;
       font-weight: bold;
@@ -92,6 +97,17 @@ header {
       font-size: 30px;
       font-weight: bold;
     }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }
 </style>
