@@ -1,5 +1,5 @@
 <template>
-  <div class="section-header">
+  <div class="section-header" :style="styles">
     <span class="line-top-back">
       <div class="line-top-front" />
     </span>
@@ -14,7 +14,15 @@
 export default {	
   name: 'SectionHeader',	
   props: {	
-    title: String	
+    title: String,
+    backgroundColor: String,
+  },
+  computed: {
+    styles() {
+      return {
+        '--backgroundColor': this.backgroundColor,
+      }
+    }
   }	
 }
 </script>
@@ -61,7 +69,7 @@ export default {
     position: relative;
     width: 100%;
     height: 20px;
-    background: linear-gradient(35deg, #ffcbcb 18px, transparent 0), linear-gradient(325deg, #ffcbcb 18px, transparent 0);
+    background: linear-gradient(35deg, var(--backgroundColor) 18px, transparent 0), linear-gradient(325deg, var(--backgroundColor) 18px, transparent 0);
     background-size: 50px 20px;
   }
   
@@ -78,7 +86,7 @@ export default {
     position: relative;
     width: 100%;
     height: 20px;
-    background: linear-gradient(145deg, #ffcbcb 18px, transparent 0), linear-gradient(215deg, #ffcbcb 18px, transparent 0);
+    background: linear-gradient(145deg, var(--backgroundColor) 18px, transparent 0), linear-gradient(215deg, var(--backgroundColor) 18px, transparent 0);
     background-size: 50px 20px;
   }
 }

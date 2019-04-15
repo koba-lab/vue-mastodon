@@ -2,9 +2,10 @@
   <div class="home text-center">
     <Header />
 
+    <Fes />
     <section class="l-members">
       <div class="container">
-        <SectionHeader title="イカしたニクショクチーム" />
+        <SectionHeader title="イカしたニクショクチーム" backgroundColor="#ffcbcb" />
         <div class="l-members-row row" v-if="lists.length > 0">
           <div class="l-members-box-wrapper col-6 col-md-3 mb-4" v-for="(list, index) in lists" :key="index">
             <div class="l-members-box p-4 rounded">
@@ -36,6 +37,7 @@ const _ = require("lodash");
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import SectionHeader from '@/components/SectionHeader.vue'
+import Fes from '@/components/Fes.vue'
 
 export default {
   name: 'home',
@@ -43,6 +45,7 @@ export default {
     Header,
     Footer,
     SectionHeader,
+    Fes,
   },
   data() {
     return {
