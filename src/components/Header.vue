@@ -38,7 +38,7 @@ header {
 
   .key-visual {
     max-width: 80%;
-    animation: fadeIn 1s 1s both;
+    animation: fadeIn 1s 1.5s both;
   }
 }
 
@@ -57,7 +57,7 @@ header {
   }
 
   .message {
-    animation: fadeIn 1s both;
+    animation: fadeIn 1s 0.5s both;
 
     h1 {
       font-size: 30px;
@@ -86,7 +86,7 @@ header {
   }
 
   .message {
-    animation: fadeIn 1s both;
+    animation: fadeIn 1s 0.5s both;
 
     h1 {
       font-size: 80px;
