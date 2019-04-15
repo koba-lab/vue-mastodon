@@ -25,6 +25,8 @@
         </div>
       </div>
     </section>
+
+    <Footer />
   </div>
 </template>
 
@@ -32,12 +34,14 @@
 // @ is an alias to /src
 const _ = require("lodash");
 import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 import SectionHeader from '@/components/SectionHeader.vue'
 
 export default {
   name: 'home',
   components: {
     Header,
+    Footer,
     SectionHeader,
   },
   data() {
