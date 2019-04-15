@@ -53,6 +53,7 @@ export default {
     max-width: 400px;
     background: linear-gradient(35deg, #4c3535 18px, transparent 0), linear-gradient(325deg, #4c3535 18px, transparent 0);
     background-size: 50px 20px;
+    animation: downUp 1s infinite;
   }
   
   .line-top-front {
@@ -69,6 +70,7 @@ export default {
     max-width: 400px;
     background: linear-gradient(145deg, #4c3535 18px, transparent 0), linear-gradient(215deg, #4c3535 18px, transparent 0);
     background-size: 50px 20px;
+    animation: upDown 1s infinite;
   }
   
   .line-bottom-front {
@@ -78,6 +80,30 @@ export default {
     height: 20px;
     background: linear-gradient(145deg, #ffcbcb 18px, transparent 0), linear-gradient(215deg, #ffcbcb 18px, transparent 0);
     background-size: 50px 20px;
+  }
+}
+
+@keyframes downUp {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes upDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
   }
 }
 </style>
