@@ -4,8 +4,8 @@
 
     <section class="l-members">
       <div class="container">
-        <h3 class="heading">イカしたニクショクチーム</h3>
-        <div class="row" v-if="lists.length > 0">
+        <SectionHeader title="イカしたニクショクチーム" />
+        <div class="l-members-row row" v-if="lists.length > 0">
           <div class="l-members-box-wrapper col-6 col-md-3 mb-4" v-for="(list, index) in lists" :key="index">
             <div class="l-members-box p-4 rounded">
               <div class="l-members-box-icon text-center">
@@ -32,11 +32,13 @@
 // @ is an alias to /src
 const _ = require("lodash");
 import Header from '@/components/Header.vue'
+import SectionHeader from '@/components/SectionHeader.vue'
 
 export default {
   name: 'home',
   components: {
     Header,
+    SectionHeader,
   },
   data() {
     return {
@@ -56,20 +58,19 @@ export default {
 </script>
 
 <style lang="scss">
-.heading {
-  font-family: 'Noto Sans CJK JP';
-  text-align: center;
-  padding: 5rem 0
-}
-
 .l-members {
+  padding: 1rem 0;
   background-color: #FFCBCB;
   font-weight: bold;
   font-size: 20px;
 
-  .l-members-box {
+  &-row {
+    padding: 1rem 0;
+  }
+
+  &-box {
     background-color: #FF8383;    
-    .l-members-box-icon {
+    &-icon {
       img {
         width: 100px;
         height: 100px;
