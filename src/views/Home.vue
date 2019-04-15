@@ -1,6 +1,6 @@
 <template>
   <div class="home text-center">
-    <HelloWorld msg="イカトドン肉派サイトのために色々するサイト"/>
+    <Header />
 
     <section class="l-members">
       <div class="container">
@@ -31,12 +31,12 @@
 <script>
 // @ is an alias to /src
 const _ = require("lodash");
-import HelloWorld from '@/components/HelloWorld.vue'
+import Header from '@/components/Header.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    Header,
   },
   data() {
     return {
