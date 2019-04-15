@@ -4,11 +4,11 @@
       <a href="https://ika.queloud.net" target="_blank">
         <img src="@/assets/icon.png" />
       </a>
-      <span class="party">イカトドンフェス 肉派</span>
+      <span class="party pl-2">イカトドンフェス 肉派</span>
     </div>
-    <div class="message">
+    <div class="message pt-5 pb-1">
       <h1>あなたと焼く肉が何よりの<br />「ごちそう」</h1>
-      <p>- しゃちょ</p>
+      <p class="pb-1">- しゃちょ</p>
     </div>
     <img src="@/assets/ikatako.png" class="key-visual" />
   </header>
@@ -26,24 +26,49 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 header {
-  height: 1080px;
-  background: url('../assets/niku.png') center no-repeat;
+  background-image: url('../assets/niku.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 
-  h1 {
-    font-size: 80px;
-    font-weight: bold;
+  .key-visual {
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  .ikatodon-icon {
+    align-self: baseline;
+
+    img {
+      height: 40px;
+    }
+
+    .party {
+      font-size: 16px;
+      font-weight: bold;
+    }
   }
 
-  p {
-    font-size: 30px;
-    font-weight: bold;
-  }
+  .message {
+    h1 {
+      font-size: 30px;
+      font-weight: bold;
+    }
 
+    p {
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+}
+
+@media screen and (min-width: 1120px) {
   .ikatodon-icon {
     align-self: baseline;
 
@@ -52,14 +77,21 @@ header {
     }
 
     .party {
-      padding-left: 20px;
       font-size: 20px;
       font-weight: bold;
     }
   }
 
-  .key-visual {
-    height: 476px;
+  .message {
+    h1 {
+      font-size: 80px;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 30px;
+      font-weight: bold;
+    }
   }
 }
 </style>
