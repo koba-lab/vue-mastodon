@@ -13,6 +13,7 @@
     "core-js": "^2.6.5",
     "lodash": "^4.17.11",
     "vue": "^2.6.6",
+    "vue-carousel": "^0.18.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

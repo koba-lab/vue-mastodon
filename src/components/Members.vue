@@ -1,46 +1,56 @@
 <template>
   <section class="l-members">
-      <div class="container">
-        <SectionHeader title="イカしたニクショクチーム" class="mb-5" backgroundColor="#ffcbcb" />
-        <div class="l-members-row row" v-if="lists.length > 0">
-          <div class="l-members-box-wrapper col-6 col-md-3 mb-5 mt-3" v-for="(list, index) in lists" :key="index">
-            <div class="l-members-box rounded">
-              <div class="l-members-box-icon text-center">
-                <img class="rounded-circle" :src="list.avatar_static" :alt="name(list)">
+    <div class="container">
+      <SectionHeader title="イカしたニクショクチーム" class="mb-5" backgroundColor="#ffcbcb" />
+      <div class="l-members-row row" v-if="users.length > 0">
+        <div class="l-members-box-wrapper col-6 col-md-3 mb-5 mt-3" v-for="(user, index) in users" :key="index">
+          <div class="l-members-box rounded">
+            <div class="l-members-box-icon text-center">
+              <img class="rounded-circle" :src="user.avatar_static" :alt="name(user)">
+            </div>
+            <div class="display-name mb-2">
+              {{name(user)}}
+            </div>
+            <div>
+              <div class="username text-truncate mb-2">
+                <a :href="user.url" target="_blank">@{{user.username}}</a>
               </div>
-              <div class="display-name mb-2">
-                {{name(list)}}
-              </div>
-              <div>
-                <div class="username text-truncate mb-2">
-                  <a :href="list.url" target="_blank">@{{list.username}}</a>
-                </div>
-                <button class="btn btn-outline-dark btn-more" @click="show()">more</button>
-              </div>
+              <button class="btn btn-outline-dark btn-more" @click="show(user)">more</button>
             </div>
           </div>
         </div>
       </div>
+    </div>
+
+    <MembersModal v-if="viewUser" :default-user="viewUser" @close="viewUser = null" />
+
   </section>
 </template>
 
 <script>
-import SectionHeader from '@/components/SectionHeader.vue'
+import SectionHeader from '@/components/SectionHeader'
+import MembersModal from '@/components/MembersModal'
 
 export default {
   name: 'Members',
   components: {
     SectionHeader,
+    MembersModal
   },
   props: {
-    lists: Array
+    users: Array
+  },
+  data () {
+    return {
+      viewUser: null,
+    }
   },
   methods: {
-    show() {
-      alert("ユーザーの詳細モーダルが表示される予定")
+    show(user) {
+      this.viewUser = user
     },
-    name(list) {
-      return (list.display_name) ? list.display_name : list.username 
+    name(user) {
+      return (user.display_name) ? user.display_name : user.username 
     }
   },
 }
@@ -77,9 +87,6 @@ $boxBackgroundColor: #FF8383;
       left: 50%;
       transform:translate(-50%, -50%);
 
-      margin-left: auto;
-      margin-right: auto;
-      
       $imgBorderWidth: 10px;
       img {
         border: $imgBorderWidth $boxBackgroundColor solid;
