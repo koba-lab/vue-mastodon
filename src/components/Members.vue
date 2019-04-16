@@ -8,9 +8,7 @@
             <div class="l-members-box-icon text-center">
               <img class="rounded-circle" :src="user.avatar_static" :alt="name(user)">
             </div>
-            <div class="display-name mb-2">
-              {{name(user)}}
-            </div>
+            <div class="display-name mb-2" v-html="nameHtml(user)"></div>
             <div>
               <div class="username text-truncate mb-2">
                 <a :href="user.url" target="_blank">@{{user.username}}</a>
@@ -51,17 +49,42 @@ export default {
     },
     name(user) {
       return (user.display_name) ? user.display_name : user.username 
+    },
+    nameHtml(user) {
+      // 文字列をエスケープして取得
+      let name = this.name(user)
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/ /g, "&nbsp;")
+        .replace(/\r/g, "&#13;")
+        .replace(/\n/g, "&#10;");
+
+      // 絵文字部分だけHTML化
+      user.emojis.forEach(emoji => {
+        name = name.replace(`:${emoji.shortcode}:`, `<img class="emoji" src="${emoji.static_url}" alt="${emoji.shortcode}"></img>`)
+      })
+      return name.trim()
     }
   },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<style lang="scss">
 $breakPointPc: 1120px;
 $breakPointSp: 375px;
 $sectionBackgroundColor: #FFCBCB;
 $boxBackgroundColor: #FF8383;
+
+.emoji {
+  font-family: "object-fit:contain", inherit;
+  vertical-align: middle;
+  -o-object-fit: contain;
+  object-fit: contain;
+  margin: -.2ex .15em .2ex;
+  width: 16px;
+  height: 16px;  
+}
 
 .l-members {
   padding: 3rem 0;
@@ -110,6 +133,11 @@ $boxBackgroundColor: #FF8383;
     -webkit-line-clamp: 2;
     text-overflow: ellipsis;
     overflow: hidden;
+    .emoji {
+      margin: -.6ex 0 .2ex;
+      width: 18px;
+      height: 18px;  
+    }
   }
 
   .username {
