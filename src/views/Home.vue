@@ -6,6 +6,8 @@
 
     <Members :lists="lists" />
 
+    <ProductionTeam :memberList="productionMember" />
+
     <Footer />
   </div>
 </template>
@@ -17,6 +19,7 @@ import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import Fes from '@/components/Fes.vue'
 import Members from '@/components/Members.vue'
+import ProductionTeam from '@/components/ProductionTeam.vue'
 
 export default {
   name: 'home',
@@ -25,10 +28,12 @@ export default {
     Footer,
     Fes,
     Members,
+    ProductionTeam,
   },
   data() {
     return {
       lists: [],
+      productionMember: [],
     }
   },
   created () {
