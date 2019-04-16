@@ -54,7 +54,7 @@ $sectionBackgroundColor: #FFCBCB;
 $boxBackgroundColor: #FF8383;
 
 .l-members {
-  padding: 1rem 0;
+  padding: 3rem 0;
   background-color: $sectionBackgroundColor;
   font-weight: bold;
   font-size: 20px;

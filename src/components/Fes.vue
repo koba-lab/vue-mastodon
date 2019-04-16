@@ -21,7 +21,7 @@ export default {
 
 <style scoped lang="scss">
 .fes {
-  padding: 1rem;
+  padding: 3rem 1rem;
   background-color: #f7736e;
   color: #4c3535;
 
