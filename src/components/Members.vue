@@ -1,15 +1,15 @@
 <template>
   <section class="l-members">
       <div class="container">
-        <SectionHeader title="イカしたニクショクチーム" backgroundColor="#ffcbcb" />
+        <SectionHeader title="イカしたニクショクチーム" class="mb-5" backgroundColor="#ffcbcb" />
         <div class="l-members-row row" v-if="lists.length > 0">
-          <div class="l-members-box-wrapper col-6 col-md-3 mb-4" v-for="(list, index) in lists" :key="index">
-            <div class="l-members-box p-4 rounded">
+          <div class="l-members-box-wrapper col-6 col-md-3 mb-5 mt-3" v-for="(list, index) in lists" :key="index">
+            <div class="l-members-box rounded">
               <div class="l-members-box-icon text-center">
-                <img class="rounded-circle" :src="list.avatar_static" :alt="list.display_name">
+                <img class="rounded-circle" :src="list.avatar_static" :alt="name(list)">
               </div>
               <div class="display-name mb-2">
-                {{list.display_name}}
+                {{name(list)}}
               </div>
               <div>
                 <div class="username text-truncate mb-2">
@@ -38,16 +38,24 @@ export default {
   methods: {
     show() {
       alert("ユーザーの詳細モーダルが表示される予定")
+    },
+    name(list) {
+      return (list.display_name) ? list.display_name : list.username 
     }
-  }
+  },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+$breakPointPc: 1120px;
+$breakPointSp: 375px;
+$sectionBackgroundColor: #FFCBCB;
+$boxBackgroundColor: #FF8383;
+
 .l-members {
   padding: 1rem 0;
-  background-color: #FFCBCB;
+  background-color: $sectionBackgroundColor;
   font-weight: bold;
   font-size: 20px;
 
@@ -55,12 +63,35 @@ export default {
     padding: 1rem 0;
   }
 
+  &-box-wrapper {
+    position: relative;
+  }
+
   &-box {
-    background-color: #FF8383;    
+    background-color: $boxBackgroundColor;
+    padding: 3.5rem 1.5rem 1.5rem;
+
     &-icon {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform:translate(-50%, -50%);
+
+      margin-left: auto;
+      margin-right: auto;
+      
+      $imgBorderWidth: 10px;
       img {
-        width: 100px;
-        height: 100px;
+        border: $imgBorderWidth $boxBackgroundColor solid;
+        background-color: $boxBackgroundColor; // 透過pngの画像とかあるので、bgcolor入れときます
+        height: 100px + $imgBorderWidth;
+        width: 100px + $imgBorderWidth;
+      }
+      @media screen and (max-width: $breakPointSp) {
+        img {
+          height: 80px + $imgBorderWidth;
+          width: 80px + $imgBorderWidth;
+        }
       }
     }
   }
