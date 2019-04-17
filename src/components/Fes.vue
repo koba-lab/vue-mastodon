@@ -21,12 +21,17 @@ export default {
 
 <style scoped lang="scss">
 .fes {
-  padding: 3rem 1rem;
-  background-color: #f7736e;
+  background-color: #ff8383;
   color: #4c3535;
+  padding: 3rem 1rem;
+  background-image: url('../assets/oniku.png'); // とりあえず背景にしとく
+
+  @media screen and (max-width: 1120px) {
+    background-size: 110px;
+  }
 
   &-time {
-    padding-top: 1rem;
+    padding-top: 3rem;
     font-size: 1.4rem;
     font-weight: bold;
   }
