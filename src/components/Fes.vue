@@ -92,10 +92,19 @@ $breakPoint: 1120px;
       bottom: 0;
       margin: auto;
       width: 90%;
+      transform-origin: bottom center;
 
       @media screen and (max-width: $breakPoint) {
         width: 100%;
       }
+    }
+
+    &-niku {
+      animation: swingLeftRight 2s 2s infinite;
+    }
+
+    &-sushi {
+      animation: swingRightLeft 2s 2s infinite;
     }
 
     &-niku-logo, &-sushi-logo {
@@ -122,6 +131,50 @@ $breakPoint: 1120px;
         top: -30%;
       }
     }
+  }
+}
+
+@keyframes swingRightLeft {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(15deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+
+  75% {
+    transform: rotate(-15deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes swingLeftRight {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-15deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+
+  75% {
+    transform: rotate(15deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
   }
 }
 </style>
