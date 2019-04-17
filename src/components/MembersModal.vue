@@ -36,11 +36,11 @@
                     <div class="content text-left">
                       <section class="mb-4">
                         <h4 class="mb-2"><i class="fas fa-utensils mr-4"></i>好きなお肉</h4>
-                        <div>肩ロース、ぼんじり</div>
+                        <div>{{comment(user).niku}}</div>
                       </section>
                       <section>
                         <h4 class="mb-2"><i class="fas fa-comment mr-4"></i>フェスの意気込み</h4>
-                        <div>{{text}}</div>
+                        <div class="comment">{{comment(user).comment}}</div>
                       </section>
                     </div>
                   </div><!-- /文章カラム -->
@@ -58,6 +58,8 @@
 <script>
 import { Carousel, Slide } from 'vue-carousel';
 
+const COMMENTS = require('@/assets/comments.json')
+
 export default {
   name: 'MembersModal',
   components: {
@@ -71,17 +73,11 @@ export default {
     },
     users: Array
   },
-  computed: {
-    text() {
-      const text = `すごい一体感を感じる。今までにない何か熱い一体感を。
-風・・・なんだろう吹いてきてる確実に、着実に、俺たちのほうに。
-中途半端はやめよう、とにかく最後までやってやろうじゃん。
-ネットの画面の向こうには沢山の仲間がいる。決して一人じゃない。
-信じよう。そしてともに戦おう。
-寿司派の飯テロがTLに投下されるだろうけど、絶対に流されるなよ。すごい一体感を感じる。今までにない何か熱い一体感を。`
-      return text
+  methods: {
+    comment(user) {
+      return COMMENTS.filter(data => data.username == user.username).shift()
     }
-  }
+  },
 }
 </script>
 
@@ -124,15 +120,12 @@ $breakPointSp: 375px;
     padding: 20px 30px;
     background-color: $modalBackgroundColor;
     border-radius: .5rem;
-    max-height: 95vh;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
     transition: all .3s ease;
     position: relative;
     overflow: auto;
 
     .VueCarousel-wrapper {
-      // overflow: visible;
-
       .thumbnail {
         position: absolute;
         top: -1rem;
@@ -189,8 +182,11 @@ $breakPointSp: 375px;
     }
 
     .content {
-      white-space: pre-wrap;
-      word-wrap:break-word;
+      .comment {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        max-height: 30vh; // heightをここで決めていいんだろうか…
+      }
 
       h4 {
         font-weight: bold;
