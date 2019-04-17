@@ -43,10 +43,21 @@ export default {
     async fetch() {
       const res = await this.$apiaxios.get(`/api/v1/lists/${process.env.VUE_APP_LISTID}/accounts`)
       this.users = _.orderBy(res.data, 'username', 'asc')
+      this.productionMember = this.users
     }
   }
 }
 </script>
 
 <style lang="scss">
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
 </style>
