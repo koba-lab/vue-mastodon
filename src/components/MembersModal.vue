@@ -40,7 +40,7 @@
                       </section>
                       <section>
                         <h4 class="mb-2"><i class="fas fa-comment mr-4"></i>フェスの意気込み</h4>
-                        <div>{{comment(user).comment}}</div>
+                        <div class="comment">{{comment(user).comment}}</div>
                       </section>
                     </div>
                   </div><!-- /文章カラム -->
@@ -120,15 +120,12 @@ $breakPointSp: 375px;
     padding: 20px 30px;
     background-color: $modalBackgroundColor;
     border-radius: .5rem;
-    max-height: 95vh;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
     transition: all .3s ease;
     position: relative;
     overflow: auto;
 
     .VueCarousel-wrapper {
-      // overflow: visible;
-
       .thumbnail {
         position: absolute;
         top: -1rem;
@@ -185,8 +182,11 @@ $breakPointSp: 375px;
     }
 
     .content {
-      white-space: pre-wrap;
-      word-wrap: break-word;
+      .comment {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        max-height: 30vh; // heightをここで決めていいんだろうか…
+      }
 
       h4 {
         font-weight: bold;
