@@ -1,12 +1,8 @@
 <template>
   <div class="section-header" :style="styles">
-    <span class="line-top-back">
-      <div class="line-top-front" />
-    </span>
+    <img src="@/assets/heading-top.png" class="heading-top" />
     <h3 class="title">{{ title }}</h3>
-    <span class="line-bottom-back">
-      <div class="line-bottom-front" />
-    </span>
+    <img src="@/assets/heading-bottom.png" class="heading-bottom" />
   </div>
 </template>
 
@@ -34,6 +30,14 @@ export default {
   justify-content: space-between;
   align-items: center;
 
+  .heading-top {
+    animation: downUp 1s infinite;
+  }
+
+  .heading-bottom {
+    animation: upDown 1s infinite;
+  }
+
   @media screen and (max-width: 1120px) {
     .title {
       color: #4c3535;
@@ -42,6 +46,10 @@ export default {
       font-weight: bold;
       padding: 2rem 0;
       margin-block-end: 0;
+    }
+
+    .heading-top, .heading-bottom {
+      width: 200px;
     }
   }
 
@@ -54,41 +62,12 @@ export default {
       padding: 2rem 0;
       margin-block-end: 0;
     }
+
+    .heading-top, .heading-bottom {
+      width: 400px;
+    }
   }
-  
-  .line-top-back {
-    width: 85%;
-    max-width: 400px;
-    background: linear-gradient(35deg, #4c3535 18px, transparent 0), linear-gradient(325deg, #4c3535 18px, transparent 0);
-    background-size: 50px 20px;
-    animation: downUp 1s infinite;
-  }
-  
-  .line-top-front {
-    bottom: -5px;
-    position: relative;
-    width: 100%;
-    height: 20px;
-    background: linear-gradient(35deg, var(--backgroundColor) 18px, transparent 0), linear-gradient(325deg, var(--backgroundColor) 18px, transparent 0);
-    background-size: 50px 20px;
-  }
-  
-  .line-bottom-back {
-    width: 85%;
-    max-width: 400px;
-    background: linear-gradient(145deg, #4c3535 18px, transparent 0), linear-gradient(215deg, #4c3535 18px, transparent 0);
-    background-size: 50px 20px;
-    animation: upDown 1s infinite;
-  }
-  
-  .line-bottom-front {
-    bottom: 5px;
-    position: relative;
-    width: 100%;
-    height: 20px;
-    background: linear-gradient(145deg, var(--backgroundColor) 18px, transparent 0), linear-gradient(215deg, var(--backgroundColor) 18px, transparent 0);
-    background-size: 50px 20px;
-  }
+
 }
 
 @keyframes downUp {
