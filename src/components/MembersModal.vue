@@ -1,43 +1,54 @@
 <template>
 <div class="l-members-modal">
   <transition name="modal">
-    <div class="modal-mask">
+    <div class="modal-mask justify-content-center align-items-center">
       <div class="modal-wrapper">
         <div class="modal-container container py-4">
-          <button class="btn btn-close" @click="$emit('close')"><i class="fas fa-times fa-lg"></i></button>
+            <button class="btn btn-close" @click="$emit('close')"><i class="fas fa-times fa-lg"></i></button>
+            <carousel 
+              ref="carousel"
+              :per-page="1" 
+              :navigation-enabled="true" 
+              :pagination-enabled="false"
+              :navigate-to="[defaultPage, false]"
+              navigation-prev-label='<i class="fas fa-angle-left"></i>'
+              navigation-next-label='<i class="fas fa-angle-right"></i>'
+            >
+              <slide v-for="user in users" :key="user.username">
+                <div class="row l-member-info">
+                  <!-- 画像カラム -->
+                  <div class="col-md-6 l-member-info-thumb mb-4">
+                    <div class="thumbnail">
+                      <img class="rounded-circle" :src="user.avatar_static" :alt="$parent.name(user)">
+                    </div>
+                    <div class="user-image text-center">
+                      <img class="img-fluid" src="@/assets/user-images/sample.png" alt="">
+                    </div>
+                  </div><!-- /画像カラム -->
 
-          <div class="row l-member-info">
-            <!-- 画像カラム -->
-            <div class="col-md-6 l-member-info-thumb mb-4">
-              <div class="thumbnail">
-                <img class="rounded-circle" :src="defaultUser.avatar_static" :alt="$parent.name(defaultUser)">
-              </div>
-              <div class="user-image text-center">
-                <img class="img-fluid" src="@/assets/user-images/sample.png" alt="">
-              </div>
-            </div><!-- /画像カラム -->
+                  <!-- 文章カラム -->
+                  <div class="col-md-6 l-member-info-detail">
+                    <div class="heading mb-4">
+                      <h3 class="mb-3" v-html="$parent.nameHtml(user)"></h3>
+                      <div>@{{user.username}}</div>
+                    </div>
 
-            <!-- 文章カラム -->
-            <div class="col-md-6 l-member-info-detail">
-              <div class="heading mb-4">
-                <h3 class="mb-3" v-html="$parent.nameHtml(defaultUser)"></h3>
-                <div>@{{defaultUser.username}}</div>
-              </div>
+                    <div class="content text-left">
+                      <section class="mb-4">
+                        <h4 class="mb-2"><i class="fas fa-utensils mr-4"></i>好きなお肉</h4>
+                        <div>肩ロース、ぼんじり</div>
+                      </section>
+                      <section>
+                        <h4 class="mb-2"><i class="fas fa-comment mr-4"></i>フェスの意気込み</h4>
+                        <div>{{text}}</div>
+                      </section>
+                    </div>
+                  </div><!-- /文章カラム -->
+                </div>
+              </slide>
+            </carousel>
 
-              <div class="content text-left">
-                <section class="mb-4">
-                  <h4 class="mb-2"><i class="fas fa-utensils mr-4"></i>好きなお肉</h4>
-                  <div>肩ロース、ぼんじり</div>
-                </section>
-                <section>
-                  <h4 class="mb-2"><i class="fas fa-comment mr-4"></i>フェスの意気込み</h4>
-                  <div>{{text}}</div>
-                </section>
-              </div>
-            </div><!-- /文章カラム -->
           </div>
-
-        </div>
       </div>
     </div>
   </transition>
@@ -45,10 +56,20 @@
 </template>
 
 <script>
+import { Carousel, Slide } from 'vue-carousel';
+
 export default {
   name: 'MembersModal',
+  components: {
+    Carousel,
+    Slide
+  },
   props: {
-    defaultUser: Object, // 初期表示時のユーザー情報
+    defaultPage: { // 初期表示時のページ番号
+      type: Number,
+      default: 1,
+    },
+    users: Array
   },
   computed: {
     text() {
@@ -103,13 +124,31 @@ $breakPointSp: 375px;
     padding: 20px 30px;
     background-color: $modalBackgroundColor;
     border-radius: .5rem;
-    max-height: 95%;
+    max-height: 75%;
     width: 75%;
-    max-width: 95%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
     transition: all .3s ease;
     position: relative;
     overflow: auto;
+
+    .VueCarousel-wrapper {
+      // overflow: visible;
+
+      .thumbnail {
+        position: absolute;
+        top: -1rem;
+        left: -1rem;
+        z-index: 1;
+
+        $imgBorderWidth: 10px;
+        img {
+          border: $imgBorderWidth $modalBackgroundColor solid;
+          background-color: $modalBackgroundColor; // 透過pngの画像とかあるので、bgcolor入れときます
+          height: 80px + $imgBorderWidth;
+          width: 80px + $imgBorderWidth;
+        }
+      }
+    }
   }
   @media screen and (max-width: $breakPointSp) {
     .modal-container {
@@ -138,24 +177,6 @@ $breakPointSp: 375px;
   .modal-leave-active .modal-container {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
-  }
-
-  .l-member-info-thumb {
-    position: relative;
-
-    .thumbnail {
-      position: absolute;
-      top: -1rem;
-      left: 0;
-
-      $imgBorderWidth: 10px;
-      img {
-        border: $imgBorderWidth $modalBackgroundColor solid;
-        background-color: $modalBackgroundColor; // 透過pngの画像とかあるので、bgcolor入れときます
-        height: 80px + $imgBorderWidth;
-        width: 80px + $imgBorderWidth;
-      }
-    }
   }
 
   .l-member-info-detail {

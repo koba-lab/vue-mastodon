@@ -13,14 +13,14 @@
               <div class="username text-truncate mb-2">
                 <a :href="user.url" target="_blank">@{{user.username}}</a>
               </div>
-              <button class="btn btn-outline-dark btn-more" @click="show(user)">more</button>
+              <button class="btn btn-outline-dark btn-more" @click="show(index)">more</button>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <MembersModal v-if="viewUser" :default-user="viewUser" @close="viewUser = null" />
+    <MembersModal v-if="viewpage" :default-page="viewpage" :users="users" @close="viewpage = null" />
 
   </section>
 </template>
@@ -40,12 +40,12 @@ export default {
   },
   data () {
     return {
-      viewUser: null,
+      viewpage: null,
     }
   },
   methods: {
-    show(user) {
-      this.viewUser = user
+    show(page) {
+      this.viewpage = page
     },
     name(user) {
       return (user.display_name) ? user.display_name : user.username 
