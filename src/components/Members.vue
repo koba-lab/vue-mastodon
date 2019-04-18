@@ -93,7 +93,6 @@ $boxBackgroundColor: #FF8383;
   padding: 3rem 0;
   background-color: $sectionBackgroundColor;
   font-weight: bold;
-  font-size: 20px;
 
   &-row {
     padding: 1rem 0;
@@ -130,20 +129,23 @@ $boxBackgroundColor: #FF8383;
   }
 
   .display-name {
+    font-size: 2.5vh;
     height: 90px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     text-overflow: ellipsis;
     overflow: hidden;
+    white-space: normal;
     .emoji {
       margin: -.6ex 0 .2ex;
-      width: 18px;
-      height: 18px;  
+      width: 2.5vh;
+      height: 2.5vh;  
     }
   }
 
   .username {
+    font-size: 2vh;
     a {
       color: #4C3535;
     }
