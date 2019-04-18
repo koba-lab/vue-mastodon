@@ -128,8 +128,8 @@ $breakPointSp: 375px;
     .VueCarousel-wrapper {
       .thumbnail {
         position: absolute;
-        top: -1rem;
-        left: -1rem;
+        top: .25rem;
+        left: 2.25rem;
         z-index: 1;
 
         $imgBorderWidth: 10px;
