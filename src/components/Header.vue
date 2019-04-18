@@ -10,7 +10,7 @@
       <h1>あなたと焼く肉が何よりの<br />「ごちそう」</h1>
       <p class="pb-1">- しゃちょ</p>
     </div>
-    <img src="@/assets/ikatako.png" class="key-visual" />
+    <div class="key-visual" />
   </header>
 </template>
 
@@ -22,6 +22,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+$breakPoint: 1120px;
+
 header {
   background-image: url('../assets/niku.png');
   background-position: center;
@@ -34,12 +36,22 @@ header {
   align-items: center;
 
   .key-visual {
-    max-width: 80%;
-    animation: fadeIn 1s 1.5s both;
+    width: 1000px;
+    max-width: 100%;
+    height: auto;
+    background: url('../assets/yakiniku.png');
+    background-size: 100%;
+    animation: fadeIn 1s 1.5s both, sprite 7s 2.5s steps(72) infinite;
+
+    &::before {
+      display: block;
+      content: "";
+      padding-top: 56.3%;
+    }
   }
 }
 
-@media screen and (max-width: 1120px) {
+@media screen and (max-width: $breakPoint) {
   .ikatodon-icon {
     align-self: baseline;
 
@@ -68,7 +80,7 @@ header {
   }
 }
 
-@media screen and (min-width: 1120px) {
+@media screen and (min-width: $breakPoint) {
   .ikatodon-icon {
     align-self: baseline;
 
@@ -94,6 +106,12 @@ header {
       font-size: 30px;
       font-weight: bold;
     }
+  }
+}
+
+@keyframes sprite {
+  to {
+    background-position: 0 calc(40536 / (41099 - 563) * 100%);
   }
 }
 </style>
