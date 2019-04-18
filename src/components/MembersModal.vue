@@ -1,62 +1,62 @@
 <template>
-<div class="l-members-modal">
   <transition name="modal">
-    <div class="modal-mask justify-content-center align-items-center">
-      <div class="modal-wrapper">
-        <div class="modal-container container py-4">
-            <button class="btn btn-close" @click="$emit('close')"><i class="fas fa-times fa-lg"></i></button>
-            <carousel 
+    <div class="modal--mask">
+      <div class="modal--wrapper">
+        <div class="modal--container">
+          <button class="btn modal-default-button" @click="$emit('close')">
+            <i class="fas fa-times fa-lg"></i>
+          </button>
+
+          <div class="modal--body">
+            <carousel
               ref="carousel"
               :per-page="1" 
               :navigation-enabled="true" 
               :pagination-enabled="false"
               :navigate-to="[defaultPage, false]"
-              navigation-prev-label='<i class="fas fa-angle-left"></i>'
-              navigation-next-label='<i class="fas fa-angle-right"></i>'
+              navigation-prev-label='<i class="fas fa-angle-left fa-2x"></i>'
+              navigation-next-label='<i class="fas fa-angle-right fa-2x"></i>'
             >
               <slide v-for="user in users" :key="user.username">
-                <div class="row l-member-info">
-                  <!-- 画像カラム -->
-                  <div class="col-md-6 l-member-info-thumb mb-4">
-                    <div class="thumbnail">
-                      <img class="rounded-circle" :src="user.avatar_static" :alt="$parent.name(user)">
+                <div class="row">
+                  <div class="col-md-6 mb-4 position-relative">
+                    <div class="position-absolute">
+                      <img class="thumbnail rounded-circle" :src="user.avatar_static" :alt="$parent.name(user)"> 
                     </div>
-                    <div class="user-image text-center">
-                      <img class="img-fluid w-100" src="@/assets/user-images/sample.png" alt="">
-                    </div>
-                  </div><!-- /画像カラム -->
+                    <img class="img-fluid user-image" src="@/assets/user-images/sample.png" alt="">
+                  </div>
 
-                  <!-- 文章カラム -->
-                  <div class="col-md-6 l-member-info-detail">
-                    <div class="heading mb-5">
-                      <img src="@/assets/heading-top.png" class="heading-top" />
-                      <div class="py-4">
+                  <div class="col-md-6 l-col-info">
+                    <aside class="heading mb-4">
+                      <img src="@/assets/heading-top.png" class="img-fluid" />
+                      <div class="py-2">
                         <h3 class="mb-2" v-html="$parent.nameHtml(user)"></h3>
                         <div>@{{user.username}}</div>
                       </div>
-                      <img src="@/assets/heading-bottom.png" class="heading-bottom" />
-                    </div>
+                      <img src="@/assets/heading-bottom.png" class="img-fluid" />
+                    </aside>
 
-                    <div class="content text-left">
-                      <section class="mb-4">
-                        <h4 class="mb-2"><i class="fas fa-utensils mr-4"></i>好きなお肉</h4>
-                        <div>{{comment(user).niku}}</div>
-                      </section>
-                      <section>
-                        <h4 class="mb-2"><i class="fas fa-comment mr-4"></i>フェスの意気込み</h4>
-                        <div class="comment">{{comment(user).comment}}</div>
-                      </section>
-                    </div>
-                  </div><!-- /文章カラム -->
+                    <aside class="mb-4">
+                      <h4 class="mb-2"><i class="fas fa-utensils mr-4"></i>好きなお肉</h4>
+                      <div>{{comment(user).niku}}</div>
+                    </aside>
+
+                    <aside class="l-comments">
+                      <h4 class="mb-2"><i class="fas fa-comment mr-4"></i>フェスの意気込み</h4>
+                      <div class="comment">{{comment(user).comment}}</div>
+                    </aside>
+
+                  </div>
                 </div>
               </slide>
             </carousel>
-
           </div>
+
+        </div>
       </div>
     </div>
   </transition>
-</div>
+
 </template>
 
 <script>
@@ -87,125 +87,108 @@ export default {
 
 <style lang="scss">
 $modalBackgroundColor: #FF8383;
-$breakPointPc: 1120px;
-$breakPointSp: 375px;
 
-.l-members-modal {
-  .modal-mask {
-    position: fixed;
-    z-index: 9998;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255,203,203, .9);
+.modal--mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,203,203, .9);
+  display: table;
+  transition: opacity .3s ease;
+}
 
-    display: flex;
-    transition: opacity .3s ease;
+.modal--wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
 
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+.modal--container {
+  width: 90vw;
+  margin: 0px auto;
+  padding: 20px 30px;
+  background-color: $modalBackgroundColor;
+  border-radius: .5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+  transition: all .3s ease;
+  font-family: Helvetica, Arial, sans-serif;
+  position: relative;
+  max-height: 95%;
+}
+
+.modal-default-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/*
+ * The following styles are auto-applied to elements with
+ * transition="modal" when their visibility is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-leave-active {
+  opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+img.user-image {
+  width: 100%;
+}
+img.thumbnail {
+  width: 80px;
+  top: .5rem;
+  left: 1.5rem;
+  z-index: 1;
+
+  $imgBorderWidth: 5px;
+  border: $imgBorderWidth $modalBackgroundColor solid;
+  background-color: $modalBackgroundColor; // 透過pngの画像とかあるので、bgcolor入れときます
+  height: 80px + $imgBorderWidth;
+  width: 80px + $imgBorderWidth;
+}
+.l-col-info {
+  h3,
+  h4 {
+    font-weight: bold;
   }
-
-  .modal-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .emoji {
+    margin: -.6ex 0 .2ex;
+    width: 30px;
+    height: 30px;  
   }
+}
+.l-comments {
+  max-height: 10vw;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
 
-  .btn-close {
-    position: absolute;
-    right: 0;
-    top: 0;
+.VueCarousel-navigation-button {
+  color: #4C3535 !important;
+  &:focus {
+    outline: 1px solid transparent !important;
   }
-
-  .modal-container {
-    margin: 0px auto;
-    padding: 20px 30px;
-    background-color: $modalBackgroundColor;
-    border-radius: .5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-    transition: all .3s ease;
-    position: relative;
-    overflow: auto;
-
-    .VueCarousel-wrapper {
-      .VueCarousel-navigation-button:focus {
-        outline: 1px solid transparent;
-      }
-      
-      .thumbnail {
-        position: absolute;
-        top: .5rem;
-        left: 1.5rem;
-        z-index: 1;
-
-        $imgBorderWidth: 8px;
-        img {
-          border: $imgBorderWidth $modalBackgroundColor solid;
-          background-color: $modalBackgroundColor; // 透過pngの画像とかあるので、bgcolor入れときます
-          height: 80px + $imgBorderWidth;
-          width: 80px + $imgBorderWidth;
-        }
-      }
-    }
-  }
-  @media screen and (max-width: $breakPointSp) {
-    .modal-container {
-      width: 95%;
-    }
-  }
-
-  /*
-  * transition用のスタイル
-  * The following styles are auto-applied to elements with
-  * transition="modal" when their visibility is toggled
-  * by Vue.js.
-  *
-  * You can easily play with the modal transition by editing
-  * these styles.
-  */
-  .modal-enter {
-    opacity: 0;
-  }
-
-  .modal-leave-active {
-    opacity: 0;
-  }
-
-  .modal-enter .modal-container,
-  .modal-leave-active .modal-container {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-  }
-
-  .l-member-info-detail {
+}
+.VueCarousel-wrapper {
+  .VueCarousel-slide {
     overflow: hidden;
     overflow-y: auto;
-
-    .heading {
-      h3 {
-        font-weight: bold;
-      }
-    }
-
-    .emoji {
-      margin: -.6ex 0 .2ex;
-      width: 30px;
-      height: 30px;  
-    }
-
-    .content {
-      .comment {
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        max-height: 30vh; // heightをここで決めていいんだろうか…
-      }
-
-      h4 {
-        font-weight: bold;
-      }
-    }
   }
 }
 </style>

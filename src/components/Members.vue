@@ -9,10 +9,10 @@
               <img class="rounded-circle" :src="user.avatar_static" :alt="name(user)">
             </div>
             <div class="display-name mb-2" v-html="nameHtml(user)"></div>
+            <div class="username text-truncate mb-3">
+              <a :href="user.url" target="_blank">@{{user.username}}</a>
+            </div>
             <div>
-              <div class="username text-truncate mb-2">
-                <a :href="user.url" target="_blank">@{{user.username}}</a>
-              </div>
               <button class="btn btn-outline-dark btn-more" @click="show(index)">more</button>
             </div>
           </div>
@@ -129,7 +129,7 @@ $boxBackgroundColor: #FF8383;
   }
 
   .display-name {
-    font-size: 2.5vh;
+    font-size: 1.3rem;
     height: 90px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -138,14 +138,14 @@ $boxBackgroundColor: #FF8383;
     overflow: hidden;
     white-space: normal;
     .emoji {
-      margin: -.6ex 0 .2ex;
-      width: 2.5vh;
-      height: 2.5vh;  
+      margin: -.4ex 0 .2ex;
+      width: 1.2rem;
+      height: 1.2rem;  
     }
   }
 
   .username {
-    font-size: 2vh;
+    font-size: 1rem;
     a {
       color: #4C3535;
     }
@@ -159,7 +159,7 @@ $boxBackgroundColor: #FF8383;
       padding: .25rem 2rem;
 
       border: 4px solid;
-      font-size: 20px;
+      font-size: .8rem;
       font-weight: 900;
 
       color: #4C3535;
