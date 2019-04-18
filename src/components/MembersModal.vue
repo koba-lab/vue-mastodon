@@ -22,7 +22,7 @@
                       <img class="rounded-circle" :src="user.avatar_static" :alt="$parent.name(user)">
                     </div>
                     <div class="user-image text-center">
-                      <img class="img-fluid" src="@/assets/user-images/sample.png" alt="">
+                      <img class="img-fluid w-100" src="@/assets/user-images/sample.png" alt="">
                     </div>
                   </div><!-- /画像カラム -->
 
@@ -136,8 +136,8 @@ $breakPointSp: 375px;
       
       .thumbnail {
         position: absolute;
-        top: .25rem;
-        left: 2.25rem;
+        top: .5rem;
+        left: 1.5rem;
         z-index: 1;
 
         $imgBorderWidth: 8px;
