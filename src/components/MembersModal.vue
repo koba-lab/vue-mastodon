@@ -28,9 +28,13 @@
 
                   <!-- 文章カラム -->
                   <div class="col-md-6 l-member-info-detail">
-                    <div class="heading mb-4">
-                      <h3 class="mb-3" v-html="$parent.nameHtml(user)"></h3>
-                      <div>@{{user.username}}</div>
+                    <div class="heading mb-5">
+                      <img src="@/assets/heading-top.png" class="heading-top" />
+                      <div class="py-4">
+                        <h3 class="mb-2" v-html="$parent.nameHtml(user)"></h3>
+                        <div>@{{user.username}}</div>
+                      </div>
+                      <img src="@/assets/heading-bottom.png" class="heading-bottom" />
                     </div>
 
                     <div class="content text-left">
@@ -136,7 +140,7 @@ $breakPointSp: 375px;
         left: 2.25rem;
         z-index: 1;
 
-        $imgBorderWidth: 10px;
+        $imgBorderWidth: 8px;
         img {
           border: $imgBorderWidth $modalBackgroundColor solid;
           background-color: $modalBackgroundColor; // 透過pngの画像とかあるので、bgcolor入れときます
@@ -178,6 +182,12 @@ $breakPointSp: 375px;
   .l-member-info-detail {
     overflow: hidden;
     overflow-y: auto;
+
+    .heading {
+      h3 {
+        font-weight: bold;
+      }
+    }
 
     .emoji {
       margin: -.6ex 0 .2ex;

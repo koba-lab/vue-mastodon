@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <MembersModal v-if="viewpage" :default-page="viewpage" :users="users" @close="viewpage = null" />
+    <MembersModal v-if="viewpage != null" :default-page="viewpage" :users="users" @close="viewpage = null" />
 
   </section>
 </template>
@@ -87,6 +87,9 @@ $boxBackgroundColor: #FF8383;
 }
 
 .l-members {
+  font-family: "Noto Sans CJK JP";
+  color: #4C3535;
+
   padding: 3rem 0;
   background-color: $sectionBackgroundColor;
   font-weight: bold;
@@ -110,7 +113,7 @@ $boxBackgroundColor: #FF8383;
       left: 50%;
       transform:translate(-50%, -50%);
 
-      $imgBorderWidth: 10px;
+      $imgBorderWidth: 8px;
       img {
         border: $imgBorderWidth $boxBackgroundColor solid;
         background-color: $boxBackgroundColor; // 透過pngの画像とかあるので、bgcolor入れときます
