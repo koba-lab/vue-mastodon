@@ -18,7 +18,7 @@
               navigation-next-label='<i class="fas fa-angle-right fa-2x"></i>'
             >
               <slide v-for="user in users" :key="user.username">
-                <div class="row">
+                <div class="row box-inner">
                   <div class="col-md-6 mb-4 position-relative">
                     <div class="position-absolute">
                       <img class="thumbnail rounded-circle" :src="user.avatar_static" :alt="$parent.name(user)"> 
@@ -185,10 +185,14 @@ img.thumbnail {
     outline: 1px solid transparent !important;
   }
 }
-.VueCarousel-wrapper {
-  .VueCarousel-slide {
-    overflow: hidden;
-    overflow-y: auto;
-  }
+.row.box-inner {
+  overflow: hidden;
+  overflow-y: auto;
 }
+// .VueCarousel-wrapper {
+//   .VueCarousel-slide {
+//     overflow: hidden;
+//     overflow-y: auto;
+//   }
+// }
 </style>
