@@ -126,6 +126,10 @@ $breakPointSp: 375px;
     overflow: auto;
 
     .VueCarousel-wrapper {
+      .VueCarousel-navigation-button:focus {
+        outline: 1px solid transparent;
+      }
+      
       .thumbnail {
         position: absolute;
         top: .25rem;
