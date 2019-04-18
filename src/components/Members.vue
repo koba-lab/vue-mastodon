@@ -3,7 +3,7 @@
     <div class="container">
       <SectionHeader title="イカしたニクショクチーム" class="mb-5" backgroundColor="#ffcbcb" />
       <div class="l-members-row row" v-if="users.length > 0">
-        <div class="l-members-box-wrapper col-6 col-md-3 mb-5 mt-3" v-for="(user, index) in users" :key="index">
+        <div class="l-members-box-wrapper col-6 col-md-3 mb-5 mt-4" v-for="(user, index) in users" :key="index">
           <div class="l-members-box rounded">
             <div class="l-members-box-icon text-center">
               <img class="rounded-circle" :src="user.avatar_static" :alt="name(user)">
@@ -101,10 +101,21 @@ $boxBackgroundColor: #FF8383;
   &-box-wrapper {
     position: relative;
   }
+  @media (max-width: 575.98px) {
+    &-box-wrapper:nth-child(odd){
+      padding-right: 7.5px;
+    }
+    &-box-wrapper:nth-child(even){
+      padding-left: 7.5px;
+    }
+  }
+
 
   &-box {
     background-color: $boxBackgroundColor;
     padding: 3.5rem 1.5rem 1.5rem;
+
+    box-shadow:0px 7px 0px 0px #FF6262;
 
     &-icon {
       position: absolute;
