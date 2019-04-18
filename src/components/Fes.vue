@@ -9,11 +9,11 @@
       <img src="@/assets/party-base.png" class="fes-party-base" />
       <div class="fes-party-niku-wrapper">
         <img src="@/assets/party-niku-logo.png" class="fes-party-niku-logo" />
-        <img src="@/assets/party-niku.png" class="fes-party-niku" />
+        <img src="@/assets/party-niku-icon.gif" class="fes-party-niku" />
       </div>
       <div class="fes-party-sushi-wrapper">
         <img src="@/assets/party-sushi-logo.png" class="fes-party-sushi-logo" />
-        <img src="@/assets/party-sushi.png" class="fes-party-sushi" />
+        <img src="@/assets/party-sushi-icon.gif" class="fes-party-sushi" />
       </div>
     </div>
   </div>
@@ -99,14 +99,6 @@ $breakPoint: 1120px;
       }
     }
 
-    &-niku {
-      animation: swingLeftRight 2s 2s infinite;
-    }
-
-    &-sushi {
-      animation: swingRightLeft 2s 2s infinite;
-    }
-
     &-niku-logo, &-sushi-logo {
       position: absolute;
       width: 120%;
@@ -131,50 +123,6 @@ $breakPoint: 1120px;
         top: -30%;
       }
     }
-  }
-}
-
-@keyframes swingRightLeft {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  25% {
-    transform: rotate(15deg);
-  }
-
-  50% {
-    transform: rotate(0deg);
-  }
-
-  75% {
-    transform: rotate(-15deg);
-  }
-
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes swingLeftRight {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  25% {
-    transform: rotate(-15deg);
-  }
-
-  50% {
-    transform: rotate(0deg);
-  }
-
-  75% {
-    transform: rotate(15deg);
-  }
-
-  100% {
-    transform: rotate(0deg);
   }
 }
 </style>
