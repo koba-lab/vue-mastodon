@@ -6,9 +6,9 @@
       </a>
       <span class="party pl-2">イカトドンフェス 肉派</span>
     </div>
-    <div class="message pt-5 pb-1">
-      <h1>あなたと焼く肉が何よりの<br />「ごちそう」</h1>
-      <p class="pb-1">- しゃちょ</p>
+    <div class="message-wrapper pt-5 pb-1">
+      <h1 class="message">あなたと焼く肉が何よりの<br />「ごちそう」</h1>
+      <p class="message-by pb-1">- しゃちょ</p>
     </div>
     <div class="key-visual" />
   </header>
@@ -22,7 +22,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-$breakPoint: 1120px;
+$breakPointPc: 1120px;
+$breakPointSp: 375px;
 
 header {
   background-image: url('../assets/niku.png');
@@ -34,6 +35,35 @@ header {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
+  .ikatodon-icon {
+    align-self: baseline;
+
+    img {
+      height: 40px;
+
+      @media screen and (min-width: $breakPointSp) and (max-width: $breakPointPc) {
+        height: 60px;
+      }
+
+      @media screen and (min-width: $breakPointPc) {
+        height: 100px;
+      }
+    }
+
+    .party {
+      font-size: 16px;
+      font-weight: bold;
+
+      @media screen and (min-width: $breakPointSp) and (max-width: $breakPointPc) {
+        font-size: 18px;
+      }
+
+      @media screen and (min-width: $breakPointPc) {
+        font-size: 20px;
+      }
+    }
+  }
 
   .key-visual {
     width: 1000px;
@@ -49,62 +79,26 @@ header {
       padding-top: 56.3%;
     }
   }
-}
 
-@media screen and (max-width: $breakPoint) {
-  .ikatodon-icon {
-    align-self: baseline;
-
-    img {
-      height: 40px;
-    }
-
-    .party {
-      font-size: 16px;
-      font-weight: bold;
-    }
-  }
-
-  .message {
+  .message-wrapper {
     animation: fadeIn 1s 0.5s both;
 
-    h1 {
-      font-size: 30px;
+    .message {
+      font-size: 8vw;
       font-weight: bold;
+
+      @media screen and (min-width: $breakPointPc) {
+        font-size: 80px;
+      }
     }
 
-    p {
-      font-size: 12px;
+    .message-by {
+      font-size: 5vw;
       font-weight: bold;
-    }
-  }
-}
 
-@media screen and (min-width: $breakPoint) {
-  .ikatodon-icon {
-    align-self: baseline;
-
-    img {
-      height: 100px;
-    }
-
-    .party {
-      font-size: 20px;
-      font-weight: bold;
-    }
-  }
-
-  .message {
-    animation: fadeIn 1s 0.5s both;
-
-    h1 {
-      font-size: 80px;
-      font-weight: bold;
-    }
-
-    p {
-      font-size: 30px;
-      font-weight: bold;
+      @media screen and (min-width: $breakPointPc) {
+        font-size: 30px;
+      }
     }
   }
 }
