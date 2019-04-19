@@ -1,5 +1,5 @@
 <template>
-  <div class="section-header" :style="styles">
+  <div class="section-header">
     <img src="@/assets/heading-top.png" class="heading-top" />
     <h3 class="title">{{ title }}</h3>
     <img src="@/assets/heading-bottom.png" class="heading-bottom" />
