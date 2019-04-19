@@ -6,9 +6,9 @@
         <div class="l-members-box-wrapper col-6 col-md-3 mb-5 mt-4" v-for="(user, index) in users" :key="index">
           <div class="l-members-box rounded">
             <div class="l-members-box-icon text-center">
-              <img class="rounded-circle" :src="user.avatar_static" :alt="name(user)">
+              <img class="rounded-circle" :src="user.avatar_static" :alt="textize.getName(user)">
             </div>
-            <div class="display-name mb-2" v-html="nameHtml(user)"></div>
+            <div class="display-name mb-2" v-html="textize.getNameHtml(user)"></div>
             <div class="username text-truncate mb-3">
               <a :href="user.url" target="_blank">@{{user.username}}</a>
             </div>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import textize from '@/helpers/textize'
 import SectionHeader from '@/components/SectionHeader'
 import MembersModal from '@/components/MembersModal'
 
@@ -43,28 +44,13 @@ export default {
       viewpage: null,
     }
   },
+  computed: {
+    textize: () => textize,
+  },
   methods: {
     show(page) {
       this.viewpage = page
     },
-    name(user) {
-      return (user.display_name) ? user.display_name : user.username 
-    },
-    nameHtml(user) {
-      // 文字列をエスケープして取得
-      let name = this.name(user)
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/ /g, "&nbsp;")
-        .replace(/\r/g, "&#13;")
-        .replace(/\n/g, "&#10;");
-
-      // 絵文字部分だけHTML化
-      user.emojis.forEach(emoji => {
-        name = name.replace(`:${emoji.shortcode}:`, `<img class="emoji" src="${emoji.static_url}" alt="${emoji.shortcode}"></img>`)
-      })
-      return name.trim()
-    }
   },
 }
 </script>

@@ -21,7 +21,7 @@
                 <div class="row box-inner">
                   <div class="col-md-6 mb-4 position-relative">
                     <div class="position-absolute">
-                      <img class="thumbnail rounded-circle" :src="user.avatar_static" :alt="$parent.name(user)"> 
+                      <img class="thumbnail rounded-circle" :src="user.avatar_static" :alt="textize.getName(user)"> 
                     </div>
                     <img class="img-fluid user-image" src="@/assets/user-images/sample.png" alt="">
                   </div>
@@ -30,7 +30,7 @@
                     <aside class="heading mb-4">
                       <img src="@/assets/heading-top.png" class="img-fluid" />
                       <div class="py-2">
-                        <h3 class="mb-2" v-html="$parent.nameHtml(user)"></h3>
+                        <h3 class="mb-2" v-html="textize.getNameHtml(user)"></h3>
                         <div>@{{user.username}}</div>
                       </div>
                       <img src="@/assets/heading-bottom.png" class="img-fluid" />
@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import textize from '@/helpers/textize'
 import { Carousel, Slide } from 'vue-carousel';
 
 const COMMENTS = require('@/assets/comments.json')
@@ -77,10 +78,13 @@ export default {
     },
     users: Array
   },
+  computed: {
+    textize: () => textize,
+  },
   methods: {
     comment(user) {
       return COMMENTS.filter(data => data.username == user.username).shift()
-    }
+    },
   },
 }
 </script>
