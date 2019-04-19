@@ -72,7 +72,7 @@ header {
     background-size: 100%;
     animation: fadeIn 1s 1.5s both, sprite 7s 2.5s steps(72) infinite;
     position: absolute;
-    bottom: -10px;
+    bottom: -8px;
     @media screen and (max-width: $breakPointSp) {
       bottom: -4px;
     }
