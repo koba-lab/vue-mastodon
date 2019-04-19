@@ -6,7 +6,8 @@
 
     <Members :users="users" />
 
-    <Gallery />
+    <!-- 一旦非表示で -->
+    <!-- <Gallery /> -->
 
     <ProductionTeam :memberList="productionMember" />
 
