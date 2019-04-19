@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <span>© 2019 イカトドン肉派</span>
+    <small>© 2019 イカトドン肉派</small>
   </footer>
 </template>
 
@@ -24,4 +24,3 @@ footer {
   font-weight: bold;
 }
 </style>
-

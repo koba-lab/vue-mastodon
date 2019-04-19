@@ -1,15 +1,15 @@
 <template>
   <div class="section-header">
     <img src="@/assets/heading-top.png" class="heading-top" />
-    <h3 class="title">{{ title }}</h3>
+    <h2 class="title">{{ title }}</h2>
     <img src="@/assets/heading-bottom.png" class="heading-bottom" />
   </div>
 </template>
 
 <script>
-export default {	
-  name: 'SectionHeader',	
-  props: {	
+export default {
+  name: 'SectionHeader',
+  props: {
     title: String,
   },
 }
@@ -33,7 +33,6 @@ export default {
   @media screen and (max-width: 1120px) {
     .title {
       color: #4c3535;
-      font-family: 'Noto Sans CJK JP';
       font-size: 28px;
       font-weight: bold;
       padding: 2rem 0;
@@ -48,7 +47,6 @@ export default {
   @media screen and (min-width: 1120px) {
     .title {
       color: #4c3535;
-      font-family: 'Noto Sans CJK JP';
       font-size: 50px;
       font-weight: bold;
       padding: 2rem 0;

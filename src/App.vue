@@ -8,13 +8,15 @@
 import 'bootstrap/dist/css/bootstrap.css'
 
 export default {
-  name: 'app'  
+  name: 'app'
 }
 </script>
 
 <style lang="scss">
+body {
+  font-family: "Noto Sans CJK JP", sans-serif;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;

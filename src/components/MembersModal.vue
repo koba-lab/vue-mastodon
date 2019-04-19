@@ -10,23 +10,25 @@
           <div class="modal--body">
             <carousel
               ref="carousel"
-              :per-page="1" 
-              :navigation-enabled="true" 
+              :per-page="1"
+              :navigation-enabled="true"
               :pagination-enabled="false"
               :navigate-to="[defaultPage, false]"
               navigation-prev-label='<i class="fas fa-angle-left fa-2x"></i>'
               navigation-next-label='<i class="fas fa-angle-right fa-2x"></i>'
             >
               <slide v-for="user in users" :key="user.username">
-                <div class="row box-inner">
-                  <div class="col-md-6 mb-4 position-relative">
-                    <div class="position-absolute">
-                      <img class="thumbnail rounded-circle" :src="user.avatar_static" :alt="textize.getName(user)"> 
+                <div class="box-inner">
+                  <div class="modal-item position-relative">
+                    <div class=" user-image-wrapper">
+                      <div class="thumbnail position-absolute">
+                        <img class="rounded-circle" :src="user.avatar_static" :alt="$parent.name(user)">
+                      </div>
+                      <img class="img-fluid user-image" src="@/assets/user-images/sample.png" alt="">
                     </div>
-                    <img class="img-fluid user-image" src="@/assets/user-images/sample.png" alt="">
                   </div>
 
-                  <div class="col-md-6 l-col-info">
+                  <div class="l-col-info modal-item">
                     <aside class="heading mb-4">
                       <img src="@/assets/heading-top.png" class="img-fluid" />
                       <div class="py-2">
@@ -36,14 +38,13 @@
                       <img src="@/assets/heading-bottom.png" class="img-fluid" />
                     </aside>
 
-                    <aside class="mb-4">
-                      <h4 class="mb-2"><i class="fas fa-utensils mr-4"></i>好きなお肉</h4>
+                    <aside class="user-comment mb-4">
+                      <h4 class="mb-2"><i class="fas fa-utensils mr-2"></i>好きなお肉</h4>
                       <div>{{comment(user).niku}}</div>
-                    </aside>
-
-                    <aside class="l-comments">
-                      <h4 class="mb-2"><i class="fas fa-comment mr-4"></i>フェスの意気込み</h4>
-                      <div class="comment">{{comment(user).comment}}</div>
+                      <div class="l-comments">
+                        <h4 class="mb-2"><i class="fas fa-comment mr-2"></i>フェスの意気込み</h4>
+                        <div class="comment">{{comment(user).comment}}</div>
+                      </div>
                     </aside>
 
                   </div>
@@ -90,6 +91,8 @@ export default {
 </script>
 
 <style lang="scss">
+$breakPointPc: 1120px;
+$breakPointSp: 375px;
 $modalBackgroundColor: #FF8383;
 
 .modal--mask {
@@ -97,8 +100,8 @@ $modalBackgroundColor: #FF8383;
   z-index: 9998;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(255,203,203, .9);
   display: table;
   transition: opacity .3s ease;
@@ -110,14 +113,13 @@ $modalBackgroundColor: #FF8383;
 }
 
 .modal--container {
-  width: 90vw;
+  width: 80vw;
   margin: 0px auto;
-  padding: 20px 30px;
+  padding: 30px;
   background-color: $modalBackgroundColor;
   border-radius: .5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
-  font-family: Helvetica, Arial, sans-serif;
   position: relative;
   max-height: 95%;
 }
@@ -151,36 +153,73 @@ $modalBackgroundColor: #FF8383;
   transform: scale(1.1);
 }
 
-img.user-image {
-  width: 100%;
+.user-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  @media screen and (max-width: $breakPointSp) {
+    width: 100%;
+    height: 200px;
+  }
 }
-img.thumbnail {
+img.user-image {
+  width: auto;
+  height: 100%;
+  @media screen and (max-width: $breakPointSp) {
+    width: 100%;
+    height: 200px;
+  }
+  &.img-fluid {
+  max-width: unset;
+  }
+}
+.thumbnail {
   width: 80px;
   top: .5rem;
   left: 1.5rem;
   z-index: 1;
-
-  $imgBorderWidth: 5px;
-  border: $imgBorderWidth $modalBackgroundColor solid;
-  background-color: $modalBackgroundColor; // 透過pngの画像とかあるので、bgcolor入れときます
-  height: 80px + $imgBorderWidth;
-  width: 80px + $imgBorderWidth;
+  @media screen and (max-width: $breakPointSp) {
+    top: 0;
+    left: 0;
+  }
+  img {
+    $imgBorderWidth: 5px;
+    border: $imgBorderWidth $modalBackgroundColor solid;
+    background-color: $modalBackgroundColor; // 透過pngの画像とかあるので、bgcolor入れときます
+    height: 80px + $imgBorderWidth;
+    width: 80px + $imgBorderWidth;
+  }
 }
 .l-col-info {
+  padding-left: 1em;
   h3,
   h4 {
     font-weight: bold;
   }
+  h4 {
+    font-size: 1.2rem;
+  }
   .emoji {
     margin: -.6ex 0 .2ex;
     width: 30px;
-    height: 30px;  
+    height: 30px;
   }
 }
 .l-comments {
   max-height: 10vw;
+  margin-top: 1em;
   white-space: pre-wrap;
   word-wrap: break-word;
+  .comment {
+    padding-bottom: 3em;
+  }
+}
+.user-comment {
+  text-align: left;
 }
 
 .VueCarousel-navigation-button {
@@ -189,14 +228,26 @@ img.thumbnail {
     outline: 1px solid transparent !important;
   }
 }
-.row.box-inner {
+.box-inner {
+  display: flex;
+  flex-wrap: nowrap;
   overflow: hidden;
   overflow-y: auto;
+  height: 100%;
+  .modal-item {
+    width: 50%;
+    flex-grow: 1;
+  }
+  @media screen and (max-width: $breakPointSp) {
+    flex-wrap: wrap;
+    .modal-item {
+      width: 100%;
+    }
+  }
 }
-// .VueCarousel-wrapper {
-//   .VueCarousel-slide {
-//     overflow: hidden;
-//     overflow-y: auto;
-//   }
-// }
+.VueCarousel-wrapper {
+  .VueCarousel-slide {
+    word-break: break-word;
+  }
+}
 </style>
