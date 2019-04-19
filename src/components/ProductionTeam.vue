@@ -1,8 +1,8 @@
 <template>
   <section class="production-team">
     <SectionHeader title="Production Team!!!" backgroundColor="white" />
-    <div class="production-team-row row mx-md-5 px-md-5" v-if="memberList.length > 0">
-      <div class="production-team-box-wrapper col-md-3 col-6 mb-5 mt-4" v-for="member in memberList" :key="member.username">
+    <div class="production-team-row" v-if="memberList.length > 0">
+      <div class="production-team-box-wrapper" v-for="member in memberList" :key="member.username">
         <div class="production-team-box rounded">
           <div class="production-team-box-icon text-center">
             <img class="rounded-circle" :src="member.avatar_static" />
@@ -45,11 +45,30 @@ $breakPointSp: 375px;
   background-color: white;
 
   &-row {
+    width: 100%;
+    max-width: 1120px;
+    display: flex;
+    flex-wrap: wrap;
     padding: 1rem 0;
+    margin: 0 auto;
   }
 
   &-box-wrapper {
+    margin-top: 5rem;
     position: relative;
+
+    @media (min-width: $breakPointPc) {
+      width: calc(100% / 5);
+    }
+
+    @media (min-width: $breakPointSp) and (max-width: $breakPointPc) {
+      width: calc(100% / 3);
+    }
+
+    @media (max-width: $breakPointSp) {
+      width: calc(100% / 2);
+    }
+
   }
 
   @media (max-width: 575.98px) {

@@ -91,7 +91,6 @@ $boxBackgroundColor: #FF8383;
 }
 
 .l-members {
-  font-family: "Noto Sans CJK JP";
   color: #4C3535;
 
   padding: 5rem 0;
@@ -104,25 +103,27 @@ $boxBackgroundColor: #FF8383;
 
   &-box-wrapper {
     position: relative;
-    &::before {
-      content: "";
-      display: block;
-      width: 100px;
-      height: 61px;
-      background: url('../assets/speech-bubble.svg') no-repeat;
-      background-size: contain;
-      position: absolute;
-      top: -58px;
-      left: -3px;
-      z-index: 1;
-      opacity: 0;
-      transform-origin: center right;
-      transform: rotate(-90deg);
-      transition: all .5s ease;
-    }
-    &:hover::before {
-      opacity: 1;
-      transform: rotate(0);
+    @media (min-width: $breakPointPc) {
+      &::before {
+        content: "";
+        display: block;
+        width: 100px;
+        height: 61px;
+        background: url('../assets/speech-bubble.svg') no-repeat;
+        background-size: contain;
+        position: absolute;
+        top: -58px;
+        left: -3px;
+        z-index: 1;
+        opacity: 0;
+        transform-origin: center right;
+        transform: rotate(-90deg);
+        transition: all .5s ease;
+      }
+      &:hover::before {
+        opacity: 1;
+        transform: rotate(0);
+      }
     }
   }
   @media (max-width: 575.98px) {

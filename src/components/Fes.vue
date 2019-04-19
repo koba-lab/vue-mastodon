@@ -119,8 +119,9 @@ $breakPoint: 1120px;
       top: -30%;
 
       @media screen and (max-width: $breakPoint) {
-        right: -35%;
-        top: -30%;
+        width: 90%;
+        right: -25%;
+        top: -25%;
       }
     }
   }
