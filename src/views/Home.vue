@@ -6,7 +6,12 @@
 
     <Members :users="users" />
 
+    <!-- 一旦非表示で -->
+    <!-- <Gallery /> -->
+
     <ProductionTeam :memberList="productionMember" />
+
+    <FooterVisual />
 
     <Footer />
   </div>
@@ -17,8 +22,10 @@
 const _ = require("lodash");
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
+import FooterVisual from '@/components/FooterVisual.vue'
 import Fes from '@/components/Fes.vue'
 import Members from '@/components/Members'
+import Gallery from '@/components/Gallery'
 import ProductionTeam from '@/components/ProductionTeam.vue'
 
 export default {
@@ -26,8 +33,10 @@ export default {
   components: {
     Header,
     Footer,
+    FooterVisual,
     Fes,
     Members,
+    Gallery,
     ProductionTeam,
   },
   data() {
