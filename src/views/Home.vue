@@ -6,6 +6,8 @@
 
     <Members :users="users" />
 
+    <Gallery />
+
     <ProductionTeam :memberList="productionMember" />
 
     <Footer />
@@ -19,6 +21,7 @@ import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import Fes from '@/components/Fes.vue'
 import Members from '@/components/Members'
+import Gallery from '@/components/Gallery'
 import ProductionTeam from '@/components/ProductionTeam.vue'
 
 export default {
@@ -28,6 +31,7 @@ export default {
     Footer,
     Fes,
     Members,
+    Gallery,
     ProductionTeam,
   },
   data() {
