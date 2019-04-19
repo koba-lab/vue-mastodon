@@ -10,8 +10,8 @@
           <div class="modal--body">
             <carousel
               ref="carousel"
-              :per-page="1" 
-              :navigation-enabled="true" 
+              :per-page="1"
+              :navigation-enabled="true"
               :pagination-enabled="false"
               :navigate-to="[defaultPage, false]"
               navigation-prev-label='<i class="fas fa-angle-left fa-2x"></i>'
@@ -19,9 +19,9 @@
             >
               <slide v-for="user in users" :key="user.username">
                 <div class="row box-inner">
-                  <div class="col-md-6 mb-4 position-relative">
-                    <div class="position-absolute">
-                      <img class="thumbnail rounded-circle" :src="user.avatar_static" :alt="$parent.name(user)"> 
+                  <div class="col-md-6 user-image-wrapper position-relative">
+                    <div class="thumbnail position-absolute">
+                      <img class="rounded-circle" :src="user.avatar_static" :alt="$parent.name(user)">
                     </div>
                     <img class="img-fluid user-image" src="@/assets/user-images/sample.png" alt="">
                   </div>
@@ -106,9 +106,9 @@ $modalBackgroundColor: #FF8383;
 }
 
 .modal--container {
-  width: 90vw;
+  width: 80vw;
   margin: 0px auto;
-  padding: 20px 30px;
+  padding: 30px;
   background-color: $modalBackgroundColor;
   border-radius: .5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
@@ -147,20 +147,33 @@ $modalBackgroundColor: #FF8383;
   transform: scale(1.1);
 }
 
-img.user-image {
-  width: 100%;
+.user-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 100%;
+  overflow: hidden;
 }
-img.thumbnail {
+img.user-image {
+  width: auto;
+  height: 100%;
+  &.img-fluid {
+  max-width: auto;
+  }
+}
+.thumbnail {
   width: 80px;
   top: .5rem;
   left: 1.5rem;
   z-index: 1;
-
-  $imgBorderWidth: 5px;
-  border: $imgBorderWidth $modalBackgroundColor solid;
-  background-color: $modalBackgroundColor; // 透過pngの画像とかあるので、bgcolor入れときます
-  height: 80px + $imgBorderWidth;
-  width: 80px + $imgBorderWidth;
+  img {
+    $imgBorderWidth: 5px;
+    border: $imgBorderWidth $modalBackgroundColor solid;
+    background-color: $modalBackgroundColor; // 透過pngの画像とかあるので、bgcolor入れときます
+    height: 80px + $imgBorderWidth;
+    width: 80px + $imgBorderWidth;
+  }
 }
 .l-col-info {
   h3,
@@ -170,7 +183,7 @@ img.thumbnail {
   .emoji {
     margin: -.6ex 0 .2ex;
     width: 30px;
-    height: 30px;  
+    height: 30px;
   }
 }
 .l-comments {
@@ -188,6 +201,7 @@ img.thumbnail {
 .row.box-inner {
   overflow: hidden;
   overflow-y: auto;
+  height: 100%;
 }
 // .VueCarousel-wrapper {
 //   .VueCarousel-slide {

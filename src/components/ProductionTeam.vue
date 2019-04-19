@@ -20,8 +20,7 @@ export default {
 
 <style scoped lang="scss">
 .production-team {
-  padding: 3rem 1rem;
+  padding: 5rem 0;
   background-color: white;
 }
 </style>
-

@@ -48,7 +48,7 @@ export default {
       this.viewpage = page
     },
     name(user) {
-      return (user.display_name) ? user.display_name : user.username 
+      return (user.display_name) ? user.display_name : user.username
     },
     nameHtml(user) {
       // 文字列をエスケープして取得
@@ -83,14 +83,14 @@ $boxBackgroundColor: #FF8383;
   object-fit: contain;
   margin: -.2ex .15em .2ex;
   width: 16px;
-  height: 16px;  
+  height: 16px;
 }
 
 .l-members {
   font-family: "Noto Sans CJK JP";
   color: #4C3535;
 
-  padding: 3rem 0;
+  padding: 5rem 0;
   background-color: $sectionBackgroundColor;
   font-weight: bold;
 
@@ -100,6 +100,26 @@ $boxBackgroundColor: #FF8383;
 
   &-box-wrapper {
     position: relative;
+    &::before {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 61px;
+      background: url('../assets/speech-bubble.svg') no-repeat;
+      background-size: contain;
+      position: absolute;
+      top: -58px;
+      left: -3px;
+      z-index: 1;
+      opacity: 0;
+      transform-origin: center right;
+      transform: rotate(-90deg);
+      transition: all .5s ease;
+    }
+    &:hover::before {
+      opacity: 1;
+      transform: rotate(0);
+    }
   }
   @media (max-width: 575.98px) {
     &-box-wrapper:nth-child(odd){
@@ -141,7 +161,7 @@ $boxBackgroundColor: #FF8383;
 
   .display-name {
     font-size: 1.3rem;
-    height: 90px;
+    height: 5rem;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
@@ -151,7 +171,7 @@ $boxBackgroundColor: #FF8383;
     .emoji {
       margin: -.4ex 0 .2ex;
       width: 1.2rem;
-      height: 1.2rem;  
+      height: 1.2rem;
     }
   }
 
@@ -167,7 +187,7 @@ $boxBackgroundColor: #FF8383;
 
     &.btn-outline-dark {
       border-radius: 5rem;
-      padding: .25rem 2rem;
+      padding: .25rem 2rem .45rem;
 
       border: 4px solid;
       font-size: .8rem;
@@ -178,6 +198,7 @@ $boxBackgroundColor: #FF8383;
       &:hover,
       &:active {
         color: #FF8383 !important;
+        background: #4C3535;
       }
     }
     &::after {

@@ -4,7 +4,7 @@
       <a href="https://ika.queloud.net" target="_blank">
         <img src="@/assets/icon.png" />
       </a>
-      <span class="party pl-2">イカトドンフェス 肉派</span>
+      <span class="party pl-2">肉派応援サイト - イカトドンフェス2019</span>
     </div>
     <div class="message-wrapper pt-5 pb-1">
       <h1 class="message">あなたと焼く肉が何よりの<br />「ごちそう」</h1>
@@ -33,26 +33,27 @@ header {
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  height: 100vh;
+  position: relative;
 
   .ikatodon-icon {
     align-self: baseline;
 
     img {
-      height: 40px;
+      height: 30px;
 
       @media screen and (min-width: $breakPointSp) and (max-width: $breakPointPc) {
-        height: 60px;
+        height: 40px;
       }
 
       @media screen and (min-width: $breakPointPc) {
-        height: 100px;
+        height: 50px;
       }
     }
 
     .party {
-      font-size: 16px;
+      font-size: 1.6rem;
       font-weight: bold;
 
       @media screen and (min-width: $breakPointSp) and (max-width: $breakPointPc) {
@@ -72,6 +73,8 @@ header {
     background: url('../assets/yakiniku.png');
     background-size: 100%;
     animation: fadeIn 1s 1.5s both, sprite 7s 2.5s steps(72) infinite;
+    position: absolute;
+    bottom: -10px;
 
     &::before {
       display: block;
@@ -84,20 +87,20 @@ header {
     animation: fadeIn 1s 0.5s both;
 
     .message {
-      font-size: 8vw;
+      font-size: 3rem;
       font-weight: bold;
 
       @media screen and (min-width: $breakPointPc) {
-        font-size: 80px;
+        font-size: 4rem;
       }
     }
 
     .message-by {
-      font-size: 5vw;
+      font-size: 2rem;
       font-weight: bold;
 
       @media screen and (min-width: $breakPointPc) {
-        font-size: 30px;
+        font-size: 3rem;
       }
     }
   }

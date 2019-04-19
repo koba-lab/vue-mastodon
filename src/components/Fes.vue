@@ -40,7 +40,7 @@ $breakPoint: 1120px;
   align-items: center;
   background-color: #ff8383;
   color: #4c3535;
-  padding: 3rem 1rem;
+  padding: 5rem 0;
   background-image: url('../assets/oniku.png'); // とりあえず背景にしとく
 
   @media screen and (max-width: $breakPoint) {
