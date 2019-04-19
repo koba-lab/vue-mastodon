@@ -68,7 +68,7 @@ header {
     width: 800px;
     max-width: 100%;
     height: auto;
-    background: url('../assets/yakiniku.png');
+    background: url('../assets/yakiniku-01.png');
     background-size: 100%;
     animation: fadeIn 1s 1.5s both, sprite 7s 2.5s steps(72) infinite;
     position: absolute;

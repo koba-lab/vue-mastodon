@@ -10,6 +10,8 @@
 
     <ProductionTeam :memberList="productionMember" />
 
+    <FooterVisual />
+
     <Footer />
   </div>
 </template>
@@ -19,6 +21,7 @@
 const _ = require("lodash");
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
+import FooterVisual from '@/components/FooterVisual.vue'
 import Fes from '@/components/Fes.vue'
 import Members from '@/components/Members'
 import Gallery from '@/components/Gallery'
@@ -29,6 +32,7 @@ export default {
   components: {
     Header,
     Footer,
+    FooterVisual,
     Fes,
     Members,
     Gallery,
