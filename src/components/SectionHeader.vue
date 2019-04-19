@@ -11,15 +11,7 @@ export default {
   name: 'SectionHeader',	
   props: {	
     title: String,
-    backgroundColor: String,
   },
-  computed: {
-    styles() {
-      return {
-        '--backgroundColor': this.backgroundColor,
-      }
-    }
-  }	
 }
 </script>
 
