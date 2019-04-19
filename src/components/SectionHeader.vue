@@ -1,5 +1,5 @@
 <template>
-  <div class="section-header" :style="styles">
+  <div class="section-header">
     <img src="@/assets/heading-top.png" class="heading-top" />
     <h2 class="title">{{ title }}</h2>
     <img src="@/assets/heading-bottom.png" class="heading-bottom" />
@@ -11,15 +11,7 @@ export default {
   name: 'SectionHeader',
   props: {
     title: String,
-    backgroundColor: String,
   },
-  computed: {
-    styles() {
-      return {
-        '--backgroundColor': this.backgroundColor,
-      }
-    }
-  }
 }
 </script>
 
