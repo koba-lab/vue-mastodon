@@ -29,6 +29,9 @@ $breakPointSp: 375px;
     background-size: 110px;
     max-height: 60vh;
   }
+  @media screen and (max-width: $breakPointSp) {
+    max-height: 30vh;
+  }
 }
 
 .footer-visual {
@@ -41,14 +44,10 @@ $breakPointSp: 375px;
   position: absolute;
   bottom: 0;
 
-  @media screen and (max-width: $breakPointSp) {
-    bottom: -4px;
-  }
-
   &::before {
     display: block;
     content: "";
-    padding-top: 56.3%;
+    padding-top: 56.2%;
   }
 }
 
