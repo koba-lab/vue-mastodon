@@ -166,7 +166,7 @@ $boxBackgroundColor: #FF8383;
 
   .display-name {
     font-size: 1.3rem;
-    height: 5rem;
+    height: 5.5rem;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;

@@ -121,7 +121,8 @@ $modalBackgroundColor: #FF8383;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
   position: relative;
-  max-height: 95%;
+  max-height: 95vh;
+  overflow: scroll;
 }
 
 .modal-default-button {
@@ -196,6 +197,11 @@ img.user-image {
 }
 .l-col-info {
   padding-left: 1em;
+
+  @media screen and (max-width: $breakPointPc - 1px) {
+    padding-top: 1em;
+  }
+
   h3,
   h4 {
     font-weight: bold;
@@ -231,14 +237,13 @@ img.user-image {
 .box-inner {
   display: flex;
   flex-wrap: nowrap;
-  overflow: hidden;
   overflow-y: auto;
   height: 100%;
   .modal-item {
     width: 50%;
     flex-grow: 1;
   }
-  @media screen and (max-width: $breakPointSp) {
+  @media screen and (max-width: $breakPointPc - 1px) {
     flex-wrap: wrap;
     .modal-item {
       width: 100%;
