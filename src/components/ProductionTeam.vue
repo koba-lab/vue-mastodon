@@ -1,6 +1,11 @@
 <template>
   <section class="production-team">
     <SectionHeader title="Production Team!!!" backgroundColor="white" />
+    <div v-if="memberList.length > 0" class="row">
+      <div class="col-md-3 col-6" v-for="member in memberList" :key="member.username">
+        <img class="img-fluid" :src="member.avatar_static" />
+      </div>
+    </div>
   </section>
 </template>
 
