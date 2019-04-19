@@ -25,7 +25,7 @@ export default {
     SectionHeader,
   },
   props: {
-    memberList: [],
+    memberList: Array,
   },
   methods: {
     getPosition(member) {

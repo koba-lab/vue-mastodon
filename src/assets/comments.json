@@ -97,7 +97,8 @@
       "username": "yukkipa",
       "user_id": "3",
       "niku": "ホソ",
-      "comment": "肉こそがパワー！"
+      "comment": "肉こそがパワー！",
+      "position": "Illustrator"
     },
     {
       "username": "tsukushi_spl",
@@ -180,5 +181,12 @@
       "user_id": "22246",
       "niku": "サガリ(^ ^)",
       "comment": "えいえいおー！"
+    },
+    {
+      "username": "nikubot2019",
+      "user_id": "41118",
+      "niku": "肉",
+      "comment": "がんばるぞい！",
+      "position": "Engeneer"
     }
   ]
