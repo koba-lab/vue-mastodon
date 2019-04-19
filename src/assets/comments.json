@@ -27,7 +27,8 @@
       "username": "admin",
       "user_id": "1",
       "niku": "丸腸",
-      "comment": "勝っても負けても楽しむ！！"
+      "comment": "勝っても負けても楽しむ！！",
+      "position": "Engeneer"
     },
     {
       "username": "koicon_spl",
@@ -39,7 +40,8 @@
       "username": "shachoo1215",
       "user_id": "5235",
       "niku": "ハラミ",
-      "comment": "すごい一体感を感じる。今までにない何か熱い一体感を。\n風・・・なんだろう吹いてきてる確実に、着実に、俺たちのほうに。\n中途半端はやめよう、とにかく最後までやってやろうじゃん。\nネットの画面の向こうには沢山の仲間がいる。決して一人じゃない。\n信じよう。そしてともに戦おう。\n寿司派の飯テロがTLに投下されるだろうけど、絶対に流されるなよ。"
+      "comment": "すごい一体感を感じる。今までにない何か熱い一体感を。\n風・・・なんだろう吹いてきてる確実に、着実に、俺たちのほうに。\n中途半端はやめよう、とにかく最後までやってやろうじゃん。\nネットの画面の向こうには沢山の仲間がいる。決して一人じゃない。\n信じよう。そしてともに戦おう。\n寿司派の飯テロがTLに投下されるだろうけど、絶対に流されるなよ。",
+      "position": "Poemer"
     },
     {
       "username": "zen",
@@ -57,7 +59,8 @@
       "username": "muramasa_geso",
       "user_id": "2105",
       "niku": "ぼんじり",
-      "comment": "焼き鳥いっぱい食べます！！！！！！！！"
+      "comment": "焼き鳥いっぱい食べます！！！！！！！！",
+      "position": "Illustrator"
     },
     {
       "username": "Blue_spark",
@@ -81,7 +84,8 @@
       "username": "otera05",
       "user_id": "1293",
       "niku": "牛タン",
-      "comment": "勝っても負けても焼き肉食いに行こうな！！"
+      "comment": "勝っても負けても焼き肉食いに行こうな！！",
+      "position": "git clone"
     },
     {
       "username": "_miiiii",
@@ -99,13 +103,15 @@
       "username": "tsukushi_spl",
       "user_id": "34459",
       "niku": "ささみ",
-      "comment": "良い肉食べてリーダーがんばります！！！！！！！"
+      "comment": "良い肉食べてリーダーがんばります！！！！！！！",
+      "position": "Leader"
     },
     {
       "username": "hiyaudon",
       "user_id": "1046",
       "niku": "フィレ",
-      "comment": "お肉おいしい！！！！お肉食べる！！！！みんな仲良し！！！！令和！！！！"
+      "comment": "お肉おいしい！！！！お肉食べる！！！！みんな仲良し！！！！令和！！！！",
+      "position": "Designer"
     },
     {
       "username": "kiliya",
@@ -147,7 +153,8 @@
       "username": "yu_hi",
       "user_id": "435",
       "niku": "カルビ",
-      "comment": "ニク食わねえとリキ入んねぇぞぉ！！"
+      "comment": "ニク食わねえとリキ入んねぇぞぉ！！",
+      "position": "Leader"
     },
     {
       "username": "imamu",
@@ -165,12 +172,13 @@
       "username": "km_ayaya",
       "user_id": "24542",
       "niku": "カルビ、ハラミ、タン",
-      "comment": "肉を焼いて食べたい"
+      "comment": "肉を焼いて食べたい",
+      "position": "Engeneer"
     },
     {
       "username": "Lonispl",
       "user_id": "22246",
-      "niku": "肉",
-      "comment": "頑張ります！"
+      "niku": "サガリ(^ ^)",
+      "comment": "えいえいおー！"
     }
   ]
