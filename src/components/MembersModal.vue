@@ -24,7 +24,7 @@
                       <div class="thumbnail position-absolute">
                         <img class="rounded-circle" :src="user.avatar_static" :alt="$parent.name(user)">
                       </div>
-                      <img class="img-fluid user-image" src="@/assets/user-images/sample.png" alt="">
+                      <img class="img-fluid user-image" :src="imageSrc(user)" alt="">
                     </div>
                   </div>
 
@@ -86,6 +86,15 @@ export default {
     comment(user) {
       return COMMENTS.filter(data => data.username == user.username).shift()
     },
+    imageSrc(user) {
+      const image = this.comment(user).image
+
+      if (!image) {
+        return require(`@/assets/user-images/sample.png`)
+      }
+
+      return require(`@/assets/user-images/${image}`)
+    }
   },
 }
 </script>
