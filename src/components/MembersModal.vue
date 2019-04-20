@@ -164,13 +164,15 @@ $modalBackgroundColor: #FF8383;
 }
 
 .user-image-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: auto;
   height: 100%;
   overflow: hidden;
   border-radius: 10px;
+  position: relative;
+  @media screen and (max-width: $breakPointPc) {
+    width: 100%;
+    height: 250px;
+  }
   @media screen and (max-width: $breakPointSp) {
     width: 100%;
     height: 200px;
@@ -179,9 +181,20 @@ $modalBackgroundColor: #FF8383;
 img.user-image {
   width: 100%;
   height: 100%;
+  margin: auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   object-fit: cover; // IE 非対応
-  @media screen and (max-width: $breakPointSp) {
+  @media screen and (max-width: $breakPointPc) {
     width: 100%;
+    height: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @media screen and (max-width: $breakPointSp) {
+    width: auto;
     height: 200px;
   }
   &.img-fluid {
