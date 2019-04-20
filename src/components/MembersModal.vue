@@ -90,7 +90,7 @@ export default {
       const image = this.comment(user).image
 
       if (!image) {
-        return require(`@/assets/user-images/sample.png`)
+        return require(`@/assets/user-images/default.jpg`)
       }
 
       return require(`@/assets/user-images/${image}`)
