@@ -26,7 +26,7 @@ $breakPointPc: 1120px;
 $breakPointSp: 375px;
 
 header {
-  background-image: url('../assets/niku.png');
+  background-image: url('../assets/niku.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
