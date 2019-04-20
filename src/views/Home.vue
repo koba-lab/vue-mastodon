@@ -4,20 +4,22 @@
       <Loading />
     </div>
 
-    <Header />
+    <div id="content" class="loading">
+      <Header />
 
-    <Fes />
+      <Fes />
 
-    <Members :users="users" />
+      <Members :users="users" />
 
-    <!-- 一旦非表示で -->
-    <!-- <Gallery /> -->
+      <!-- 一旦非表示で -->
+      <!-- <Gallery /> -->
 
-    <ProductionTeam :memberList="productionMember" />
+      <ProductionTeam :memberList="productionMember" />
 
-    <FooterVisual />
+      <FooterVisual />
 
-    <Footer />
+      <Footer />
+    </div>
   </div>
 </template>
 
@@ -57,9 +59,12 @@ export default {
   methods: {
     window:onload = () => {
       // this.isLoading = false
-      // とかで管理したかったけど、ここのthis = windowなのでデータにアクセスできない……
+      // とかで管理したかったけど、ここのthis = windowなのでデータにアクセスできないのでめっちゃ力技
       const loader = document.getElementById('loader')
       loader.className = 'loaded'
+
+      const content = document.getElementById('content')
+      content.className = ''
     },
     async fetch() {
       let res = await this.$apiaxios.get(`/api/v1/lists/${process.env.VUE_APP_LISTID}/accounts`)
@@ -87,6 +92,10 @@ export default {
 }
 
 .loaded {
+  display: none;
+}
+
+.loading {
   display: none;
 }
 </style>
