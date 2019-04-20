@@ -1,5 +1,9 @@
 <template>
   <div class="home text-center">
+    <div id="loader">
+      <Loading />
+    </div>
+
     <Header />
 
     <Fes />
@@ -27,6 +31,7 @@ import Fes from '@/components/Fes.vue'
 import Members from '@/components/Members'
 import Gallery from '@/components/Gallery'
 import ProductionTeam from '@/components/ProductionTeam.vue'
+import Loading from '@/components/Loading.vue'
 
 export default {
   name: 'home',
@@ -38,6 +43,7 @@ export default {
     Members,
     Gallery, // eslint-disable-line
     ProductionTeam,
+    Loading,
   },
   data() {
     return {
@@ -49,6 +55,12 @@ export default {
     this.fetch()
   },
   methods: {
+    window:onload = () => {
+      // this.isLoading = false
+      // とかで管理したかったけど、ここのthis = windowなのでデータにアクセスできない……
+      const loader = document.getElementById('loader')
+      loader.className = 'loaded'
+    },
     async fetch() {
       let res = await this.$apiaxios.get(`/api/v1/lists/${process.env.VUE_APP_LISTID}/accounts`)
       this.users = _.orderBy(res.data, [data => data.username.toLowerCase()], 'asc')
@@ -72,5 +84,9 @@ export default {
     opacity: 1;
     transform: translateY(0px);
   }
+}
+
+.loaded {
+  display: none;
 }
 </style>
