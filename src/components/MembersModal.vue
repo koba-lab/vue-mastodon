@@ -179,12 +179,13 @@ $modalBackgroundColor: #FF8383;
   }
 }
 img.user-image {
-  width: auto;
+  width: 100%;
   height: 100%;
   margin: auto;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  object-fit: cover; // IE 非対応
   @media screen and (max-width: $breakPointPc) {
     width: 100%;
     height: auto;
