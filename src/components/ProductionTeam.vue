@@ -2,12 +2,12 @@
   <section class="production-team">
     <SectionHeader title="Production Team!!!" backgroundColor="white" />
     <div class="production-team-row" v-if="memberList.length > 0">
-      <div class="production-team-box-wrapper" v-for="member in memberList" :key="member.username">
+      <div class="production-team-box-wrapper" v-for="member in members" :key="member.username">
         <div class="production-team-box rounded">
           <div class="production-team-box-icon text-center">
             <img class="rounded-circle" :src="member.avatar_static" />
           </div>
-          <div class="position-name mb-2">{{getPosition(member)}}</div>
+          <div class="position-name mb-2">{{member.position}}</div>
         </div>
       </div>
     </div>
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+const _ = require("lodash");
 import SectionHeader from '@/components/SectionHeader.vue'
 
 const COMMENTS = require('@/assets/comments.json')
@@ -27,12 +28,16 @@ export default {
   props: {
     memberList: Array,
   },
-  methods: {
-    getPosition(member) {
-      const user = COMMENTS.find(data => data.username === member.username)
-      return user.position
-    }
-  }
+  computed: {
+    members() {
+      // memberListとpositionの設定されたCOMMENTSをマージして、positionでソート
+      const members = []
+      this.memberList.forEach(member => {
+        members.push(Object.assign(member, COMMENTS.find(data => data.username === member.username)))
+      })
+      return _.orderBy(members, 'position', 'asc')
+    },
+  },
 }
 </script>
 
