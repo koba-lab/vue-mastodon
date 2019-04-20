@@ -35,7 +35,7 @@ export default {
       this.memberList.forEach(member => {
         members.push(Object.assign(member, COMMENTS.find(data => data.username === member.username)))
       })
-      return _.orderBy(members, 'position', 'asc')
+      return _.orderBy(members, [member => member.position.toLowerCase()], 'asc')
     },
   },
 }

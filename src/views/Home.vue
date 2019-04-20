@@ -51,7 +51,7 @@ export default {
   methods: {
     async fetch() {
       let res = await this.$apiaxios.get(`/api/v1/lists/${process.env.VUE_APP_LISTID}/accounts`)
-      this.users = _.orderBy(res.data, 'username', 'asc')
+      this.users = _.orderBy(res.data, [data => data.username.toLowerCase()], 'asc')
 
       res = await this.$apiaxios.get(`/api/v1/lists/85/accounts`)
       this.productionMember = res.data
