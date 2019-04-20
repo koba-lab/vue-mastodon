@@ -25,7 +25,7 @@ export default {
 
     // 絵文字部分だけHTML化
     user.emojis.forEach(emoji => {
-      name = name.replace(`:${emoji.shortcode}:`, `<img class="emoji" src="${emoji.static_url}" alt="${emoji.shortcode}"></img>`)
+      name = name.replace(new RegExp(`:${emoji.shortcode}:`, 'g'), `<img class="emoji" src="${emoji.static_url}" alt="${emoji.shortcode}"></img>`)
     })
     return name.trim()
   }
