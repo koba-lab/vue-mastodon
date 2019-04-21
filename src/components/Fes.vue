@@ -3,7 +3,7 @@
     <SectionHeader title="イカトドンフェス開催！" backgroundColor="#f7736e" />
     <div class="fes-time">
       <div>2019/4/20 20:00 - 23:00</div>
-      <div>2019/4/21 20:00 - 23:00</div>
+      <div>2019/4/21 20:00 - 22:00</div>
     </div>
     <div class="fes-party">
       <img src="@/assets/party-base.png" class="fes-party-base" />
