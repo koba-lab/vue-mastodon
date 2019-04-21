@@ -7,7 +7,7 @@
     <Members :users="users" />
 
     <!-- 一旦非表示で -->
-    <!-- <Gallery /> -->
+    <Gallery />
 
     <ProductionTeam :memberList="productionMember" />
 
