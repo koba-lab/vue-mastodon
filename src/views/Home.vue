@@ -1,19 +1,25 @@
 <template>
   <div class="home text-center">
-    <Header />
+    <div id="loader">
+      <Loading />
+    </div>
 
-    <Fes />
+    <div id="content" class="loading">
+      <Header />
 
-    <Members :users="users" />
+      <Fes />
 
-    <!-- 一旦非表示で -->
-    <!-- <Gallery /> -->
+      <Members :users="users" />
 
-    <ProductionTeam :memberList="productionMember" />
+      <!-- 一旦非表示で -->
+      <!-- <Gallery /> -->
 
-    <FooterVisual />
+      <ProductionTeam :memberList="productionMember" />
 
-    <Footer />
+      <FooterVisual />
+
+      <Footer />
+    </div>
   </div>
 </template>
 
@@ -27,6 +33,7 @@ import Fes from '@/components/Fes.vue'
 import Members from '@/components/Members'
 import Gallery from '@/components/Gallery'
 import ProductionTeam from '@/components/ProductionTeam.vue'
+import Loading from '@/components/Loading.vue'
 
 export default {
   name: 'home',
@@ -38,6 +45,7 @@ export default {
     Members,
     Gallery, // eslint-disable-line
     ProductionTeam,
+    Loading,
   },
   data() {
     return {
@@ -49,6 +57,15 @@ export default {
     this.fetch()
   },
   methods: {
+    window:onload = () => {
+      // this.isLoading = false
+      // とかで管理したかったけど、ここのthis = windowなのでデータにアクセスできないのでめっちゃ力技
+      const loader = document.getElementById('loader')
+      loader.className = 'loaded'
+
+      const content = document.getElementById('content')
+      content.className = ''
+    },
     async fetch() {
       let res = await this.$apiaxios.get(`/api/v1/lists/${process.env.VUE_APP_LISTID}/accounts`)
       this.users = _.orderBy(res.data, [data => data.username.toLowerCase()], 'asc')
@@ -72,5 +89,13 @@ export default {
     opacity: 1;
     transform: translateY(0px);
   }
+}
+
+.loaded {
+  display: none;
+}
+
+.loading {
+  display: none;
 }
 </style>
